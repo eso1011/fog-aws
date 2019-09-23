@@ -631,7 +631,6 @@ module Fog
 
           params[:headers].delete('x-amz-acl')
           params[:headers].delete('x-amz-security-token')
-          params[:headers].delete('x-amz-content-sha256')
           params[:headers].delete('x-amz-decoded-content-length')
           params[:headers].delete('Signature')
 
