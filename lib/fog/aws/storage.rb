@@ -630,9 +630,9 @@ module Fog
           Rails.logger.debug original_params
 
           params[:headers].delete('x-amz-acl')
-          # params[:headers].delete('x-amz-security-token')
-           params[:headers].delete('x-amz-decoded-content-length')
-           params[:headers].delete('Signature')
+          params[:headers].delete('x-amz-security-token')
+          params[:headers].delete('x-amz-decoded-content-length')
+          params[:headers].delete('Signature')
 
           Rails.logger.debug 'AFTER DELETE PARAMS'
           Rails.logger.debug params
