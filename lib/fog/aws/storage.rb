@@ -565,8 +565,8 @@ module Fog
           refresh_credentials_if_expired
 
           date = Fog::Time.now
-          Rails.console.debug 'ORIGINAL PARAMS'
-          Rails.console.debug merged_params
+          Rails.logger.debug 'ORIGINAL PARAMS'
+          Rails.logger.debug merged_params
           params = params.dup
           stringify_query_keys(params)
           params[:headers] = (params[:headers] || {}).dup
@@ -651,8 +651,8 @@ module Fog
             original_params[:headers].delete('Authorization')
           end
           merged_params = original_params.merge(new_params)
-          Rails.console.debug 'MERGED'
-          Rails.console.debug merged_params
+          Rails.logger.debug 'MERGED'
+          Rails.logger.debug merged_params
           response = request(merged_params, &block)
           @region, @signer = original_region, original_signer
           response
