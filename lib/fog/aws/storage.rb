@@ -624,6 +624,10 @@ module Fog
         end
 
         def _request(scheme, host, port, params, original_params, &block)
+          Rails.logger.debug 'CONNECTION PARAMS'
+          Rails.logger.debug params
+          Rails.logger.debug 'CONNECTION ORIGINAL PARAMS'
+          Rails.logger.debug original_params
           connection(scheme, host, port).request(params, &block)
         rescue Excon::Errors::MovedPermanently, Excon::Errors::TemporaryRedirect => error
           headers = (error.response.is_a?(Hash) ? error.response[:headers] : error.response.headers)
