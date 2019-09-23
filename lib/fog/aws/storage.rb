@@ -565,7 +565,8 @@ module Fog
           refresh_credentials_if_expired
 
           date = Fog::Time.now
-
+          Rails.console.debug 'ORIGINAL PARAMS'
+          Rails.console.debug merged_params
           params = params.dup
           stringify_query_keys(params)
           params[:headers] = (params[:headers] || {}).dup
@@ -649,7 +650,10 @@ module Fog
             @signer = Fog::AWS::SignatureV4.new(@aws_access_key_id, @aws_secret_access_key, @region, 's3')
             original_params[:headers].delete('Authorization')
           end
-          response = request(original_params.merge(new_params), &block)
+          merged_params = original_params.merge(new_params)
+          Rails.console.debug 'MERGED'
+          Rails.console.debug merged_params
+          response = request(merged_params, &block)
           @region, @signer = original_region, original_signer
           response
         end
