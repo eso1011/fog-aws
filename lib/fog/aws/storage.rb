@@ -596,7 +596,7 @@ module Fog
                 # AWS have confirmed that s3 can infer that the content-encoding is aws-chunked from the x-amz-content-sha256 header
                 #
                 params[:headers]['x-amz-content-sha256'] = 'STREAMING-AWS4-HMAC-SHA256-PAYLOAD'
-                params[:headers]['x-amz-decoded-content-length'] = params[:headers].delete 'Content-Length'
+                #params[:headers]['x-amz-decoded-content-length'] = params[:headers].delete 'Content-Length'
               else
                 params[:headers]['x-amz-content-sha256'] = 'UNSIGNED-PAYLOAD'
               end
@@ -631,7 +631,7 @@ module Fog
 
           params[:headers].delete('x-amz-acl')
           params[:headers].delete('x-amz-security-token')
-          params[:headers]['Content-Length'] = params[:headers].delete 'x-amz-decoded-content-length'
+#          params[:headers]['Content-Length'] = params[:headers].delete 'x-amz-decoded-content-length'
           params[:headers].delete('Signature')
 
           Rails.logger.debug 'AFTER DELETE PARAMS'
