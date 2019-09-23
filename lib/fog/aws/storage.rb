@@ -633,7 +633,7 @@ module Fog
           params[:headers].delete('x-amz-security-token')
 #          params[:headers]['Content-Length'] = params[:headers].delete 'x-amz-decoded-content-length'
           params[:headers].delete('Signature')
-
+          params[:path] = '/uploads/15246674248740.jpg'
           Rails.logger.debug 'AFTER DELETE PARAMS'
           Rails.logger.debug params
           connection(scheme, host, port).request(params, &block)
