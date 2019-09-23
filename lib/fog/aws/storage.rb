@@ -634,6 +634,9 @@ module Fog
           params[:headers].delete('x-amz-content-sha256')
           params[:headers].delete('x-amz-decoded-content-length')
           params[:headers].delete('Signature')
+
+          Rails.logger.debug 'AFTER DELETE PARAMS'
+          Rails.logger.debug params
           connection(scheme, host, port).request(params, &block)
         rescue Excon::Errors::MovedPermanently, Excon::Errors::TemporaryRedirect => error
           headers = (error.response.is_a?(Hash) ? error.response[:headers] : error.response.headers)
