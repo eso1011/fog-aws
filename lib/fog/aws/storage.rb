@@ -566,7 +566,7 @@ module Fog
 
           date = Fog::Time.now
           Rails.logger.debug 'ORIGINAL PARAMS'
-          Rails.logger.debug merged_params
+          Rails.logger.debug params
           params = params.dup
           stringify_query_keys(params)
           params[:headers] = (params[:headers] || {}).dup
